@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 // Only put constants shared between files here.
+const domain_name = '{{cookiecutter.domain_name}}';
 
 // height of the 'Gallery' header
 const double galleryHeaderHeight = 64;

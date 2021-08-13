@@ -54,6 +54,6 @@
   "debug": "n",
   "_copy_without_render": [
     "*.arb",
-    "*.dart"
+    "*.dart_tool"
   ]
 }

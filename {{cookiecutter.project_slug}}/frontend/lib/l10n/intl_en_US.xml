@@ -1,4 +1,3 @@
-{% raw %}
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   This file was automatically generated.
@@ -330,23 +329,6 @@
     name="rallyLoginButtonLogin"
     description="Text for login button."
     >LOGIN</string>
-  <string
-    name="shrineRegisterUsernameLabel"
-    description="On the register screen, a label for a textfield for the user to input their username."
-    >Username</string>
-  <string
-    name="shrineRegisterPasswordLabel"
-    description="On the register screen, a label for a textfield for the user to input their password."
-    >Password</string>
-  <string
-    name="shrineCancelButtonCaption"
-    description="On the register screen, the caption for a button to cancel register."
-    >CANCEL</string>
-  <string
-    name="shrineNextButtonCaption"
-    description="On the register screen, the caption for a button to proceed register."
-    >NEXT</string>
-
   <string
     name="rallyAlertsMessageHeadsUpShopping"
     description="Alert message shown when for example, user has used more than 90% of their shopping budget."
@@ -3116,5 +3098,3 @@
     description="Text label for Drafts destination."
     >Drafts</string>
 </resources>
-
-{% endraw %}
