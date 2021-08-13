@@ -47,7 +47,7 @@ If you want to fire up the Flutter frontend, you'll have to first, have isntalle
 
 For more on that you can follow these docs: https://flutter.dev/docs/get-started/install
 
-Once you've got your machine set up you can run the following in the frontend dir::
+Once you've got your machine set up you can run the following::
 
         $ cd frontend; flutter channel master; flutter upgrade; flutter pub get; flutter run
 
