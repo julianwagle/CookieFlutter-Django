@@ -63,6 +63,4 @@ Todo List
 
 I've still got to finish integrating the frontend with the authentication on the back end. 
 
-Finally, I'll adjust the production settings accordingly to allow for seamless push to production.
-
 
