@@ -49,10 +49,7 @@ For more on that you can follow these docs: https://flutter.dev/docs/get-started
 
 Once you've got your machine set up you can run the following in the frontend dir::
 
-        $ flutter channel master
-        $ flutter upgrade
-        $ flutter pub get
-        $ flutter run
+        $ cd frontend; flutter channel master; flutter upgrade; flutter pub get; flutter run
 
 
 Troubleshooting
