@@ -24,8 +24,7 @@
   ],
   "cloud_provider": [
     "GCP",
-    "AWS",
-    "None"
+    "AWS"
   ],
   "mail_service": [
     "Mailgun",
@@ -50,7 +49,6 @@
     "Gitlab",
     "Github"
   ],
-  "debug": "n",
   "_copy_without_render": [
     "*.arb",
     "*.xml",

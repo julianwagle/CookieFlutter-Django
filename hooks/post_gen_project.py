@@ -304,7 +304,7 @@ def remove_storages_module():
 
 
 def main():
-    debug = "{{ cookiecutter.debug }}".lower() == "y"
+    debug = False
 
     set_flags_in_envs(
         DEBUG_VALUE if debug else generate_random_user(),
@@ -330,13 +330,6 @@ def main():
 
     if "{{ cookiecutter.use_heroku }}".lower() == "n":
         remove_heroku_files()
-
-    if "{{ cookiecutter.cloud_provider}}".lower() == "none":
-        print(
-            WARNING + "You chose not to use a cloud provider, "
-            "media files won't be served in production." + TERMINATOR
-        )
-        remove_storages_module()
 
     if "{{ cookiecutter.use_celery }}".lower() == "n":
         remove_celery_files()

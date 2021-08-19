@@ -34,9 +34,6 @@ assert (
 if (
     "{{ cookiecutter.cloud_provider }}" == "GCP"
     and "{{ cookiecutter.mail_service }}" == "Amazon SES"
-) or (
-    "{{ cookiecutter.cloud_provider }}" == "None"
-    and "{{ cookiecutter.mail_service }}" == "Amazon SES"
 ):
     print(
         "You should either use AWS or select a different Mail Service for sending emails."
