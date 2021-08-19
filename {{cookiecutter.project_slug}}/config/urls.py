@@ -35,8 +35,8 @@ urlpatterns = [
     path('api/confirm-email/<key>/', VerifyEmailView.as_view(), name='email_verification_sent'),
 
 
-    # path('account/', include('allauth.urls')),
-    # path('accounts/profile/', RedirectView.as_view(url='/', permanent=True), name='profile-redirect'),
+    path('account/', include('allauth.urls')),
+    path('accounts/profile/', RedirectView.as_view(url='/', permanent=True), name='profile-redirect'),
 
     # path("api/auth-token/", obtain_auth_token),
     path('api/', include('{{cookiecutter.project_slug}}.articles.urls', namespace='articles')),
