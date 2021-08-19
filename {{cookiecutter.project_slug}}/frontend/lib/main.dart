@@ -1,49 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:frontend/l10n/L10n.dart';
-import 'package:frontend/providers/locale_provider.dart';
-import 'package:frontend/providers/login_provider.dart';
-import 'package:frontend/router/router.gr.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_analytics/firebase_analytics.dart';
+//import 'package:firebase_analytics/observer.dart';
+import 'package:frontend/controllers/controllers.dart';
+import 'package:frontend/constants/constants.dart';
+import 'package:frontend/ui/components/components.dart';
+import 'package:frontend/helpers/helpers.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
-  runApp(ProviderScope(child: MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await GetStorage.init();
+  Get.put<AuthController>(AuthController());
+  Get.put<ThemeController>(ThemeController());
+  Get.put<LanguageController>(LanguageController());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _appRouter = AppRouter();
-    context.read(loginProvider).init(context);
-    context.read(localeProvider).init();
-    return Consumer(builder: (context, watch, _) {
-      return MaterialApp.router(
-        title: 'Flutter Realworld App',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          scrollbarTheme: ScrollbarThemeData(
-            isAlwaysShown: true,
-            thickness: MaterialStateProperty.resolveWith((states) => 10),
-            showTrackOnHover: true,
-          ),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-          ),
-          primaryColor: const Color(0xFF5CB85C),
+    ThemeController.to.getThemeModeFromStore();
+    return GetBuilder<LanguageController>(
+      builder: (languageController) => Loading(
+        child: GetMaterialApp(
+          translations: Localization(),
+          locale: languageController.getLocale, // <- Current locale
+          navigatorObservers: [
+            // FirebaseAnalyticsObserver(analytics: FirebaseAnalytics()),
+          ],
+          debugShowCheckedModeBanner: false,
+          //defaultTransition: Transition.fade,
+          theme: AppThemes.lightTheme,
+          darkTheme: AppThemes.darkTheme,
+          themeMode: ThemeMode.system,
+          initialRoute: "/",
+          getPages: AppRoutes.routes,
         ),
-        routerDelegate: _appRouter.delegate(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        supportedLocales: L10n.supportedLocales,
-        locale: watch(localeProvider).locale,
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-      );
-    });
+      ),
+    );
   }
 }
