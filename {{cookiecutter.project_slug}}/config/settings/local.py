@@ -31,14 +31,6 @@ EMAIL_HOST = env("EMAIL_HOST", default="mailhog")
 EMAIL_PORT = 1025
 
 
-{%- if cookiecutter.use_whitenoise == 'y' %}
-
-# WhiteNoise
-# ------------------------------------------------------------------------------
-# http://whitenoise.evans.io/en/latest/django.html#using-whitenoise-in-development
-INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa F405
-{% endif %}
-
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#prerequisites

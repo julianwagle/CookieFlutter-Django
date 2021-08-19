@@ -1,17 +1,17 @@
-{% if cookiecutter.use_sentry == 'y' -%}
-import logging
-
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-from sentry_sdk.integrations.logging import LoggingIntegration
-{%- if cookiecutter.use_celery == 'y' %}
-from sentry_sdk.integrations.celery import CeleryIntegration
-{% endif %}
+from .base import env
 from sentry_sdk.integrations.redis import RedisIntegration
+from sentry_sdk.integrations.celery import CeleryIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
+from sentry_sdk.integrations.django import DjangoIntegration
+import sentry_sdk
+import logging
+{% if cookiecutter.use_sentry == 'y' -%}
+
+{%- if cookiecutter.use_celery == 'y' %}
+{% endif %}
 
 {% endif -%}
 from .base import *  # noqa
-from .base import env
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -97,13 +97,9 @@ GS_BUCKET_NAME = env("DJANGO_GCP_STORAGE_BUCKET_NAME")
 GS_DEFAULT_ACL = "publicRead"
 {% endif -%}
 
-{% if cookiecutter.cloud_provider != 'None' or cookiecutter.use_whitenoise == 'y' -%}
 # STATIC
 # ------------------------
-{% endif -%}
-{% if cookiecutter.use_whitenoise == 'y' -%}
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-{% elif cookiecutter.cloud_provider == 'AWS' -%}
+{% if cookiecutter.cloud_provider == 'AWS' -%}
 STATICFILES_STORAGE = "{{cookiecutter.project_slug}}.utils.storages.StaticRootS3Boto3Storage"
 COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
 STATIC_URL = f"https://{aws_s3_domain}/static/"
@@ -221,12 +217,11 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 ANYMAIL = {}
 {%- endif %}
 
-{%- if cookiecutter.use_whitenoise == 'n' -%}
 # Collectfast
 # ------------------------------------------------------------------------------
 # https://github.com/antonagestam/collectfast#installation
 INSTALLED_APPS = ["collectfast"] + INSTALLED_APPS  # noqa F405
-{% endif %}
+
 # LOGGING
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#logging

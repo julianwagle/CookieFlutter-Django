@@ -40,7 +40,6 @@
   "use_async": "y",
   "use_celery": "y",
   "use_sentry": "y",
-  "use_whitenoise": "y",
   "use_gis_tools": "y",
   "use_web_crawling_tools": "y",
   "use_data_science_tools": "y",

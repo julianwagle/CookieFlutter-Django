@@ -43,9 +43,9 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 DATABASES = {"default": env.db("DATABASE_URL")}
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
-{ % if cookiecutter.use_gis_tools == "y" % }
+{% if cookiecutter.use_gis_tools == "y" %}
 DATABASES["default"]["ENGINE"] = "django.contrib.gis.db.backends.postgis"
-{ % endif % }
+{% endif %}
 
 # URLS
 # ------------------------------------------------------------------------------
@@ -139,9 +139,6 @@ AUTH_PASSWORD_VALIDATORS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    {%- if cookiecutter.use_whitenoise == 'y' % }
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    {%- endif % }
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -270,7 +267,7 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 
-{ % if cookiecutter.use_celery == 'y' - %}
+{% if cookiecutter.use_celery == 'y' -%}
 # Celery
 # ------------------------------------------------------------------------------
 if USE_TZ:
