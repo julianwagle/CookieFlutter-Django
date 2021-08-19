@@ -38,8 +38,8 @@ DJANGO_AWS_STORAGE_BUCKET_NAME=
 {% elif cookiecutter.cloud_provider == 'GCP' %}
 # GCP
 # ------------------------------------------------------------------------------
-GOOGLE_APPLICATION_CREDENTIALS=
-DJANGO_GCP_STORAGE_BUCKET_NAME=
+GOOGLE_APPLICATION_CREDENTIALS=./certificates/google.json
+DJANGO_GCP_STORAGE_BUCKET_NAME={{ cookiecutter.project_slug }}
 {% endif %}
 # django-allauth
 # ------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ WEB_CONCURRENCY=4
 {% if cookiecutter.use_sentry == 'y' %}
 # Sentry
 # ------------------------------------------------------------------------------
-SENTRY_DSN=
+SENTRY_DSN=https://
 {% endif %}
 
 # Redis
