@@ -1,0 +1,2 @@
+curl --header "Content-Type: application/json" --data '{"username":"{{ cookiecutter.author_name.lower()|replace(' ', '') }}", "email":"{{ cookiecutter.email }}","password1":"!!!SET TEST_API_PASSWORD!!!", "password2":"!!!SET TEST_API_PASSWORD!!!"}' https://{{ cookiecutter.domain_name }}/api/registration/
+curl --header "Content-Type: application/json" --data '{"email":"{{ cookiecutter.email }}","password":"!!!SET TEST_API_PASSWORD!!!"}' https://{{ cookiecutter.domain_name }}/api/login/

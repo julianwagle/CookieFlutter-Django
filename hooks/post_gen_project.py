@@ -230,6 +230,16 @@ def set_celery_flower_password(file_path, value=None):
     )
     return celery_flower_password
 
+def set_test_api_password(file_path, value=None):
+    test_api_password = set_flag(
+        file_path,
+        "!!!SET TEST_API_PASSWORD!!!",
+        value=value,
+        length=64,
+        using_digits=True,
+        using_ascii_letters=True,
+    )
+    return test_api_password
 
 def append_to_gitignore_file(s):
     with open(".gitignore", "a") as gitignore_file:
@@ -242,6 +252,7 @@ def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
     production_django_envs_path = os.path.join(".envs", ".production", ".django")
     local_postgres_envs_path = os.path.join(".envs", ".local", ".postgres")
     production_postgres_envs_path = os.path.join(".envs", ".production", ".postgres")
+    test_api_path = os.path.join("!NOTES!", "testing.txt")
 
     set_django_secret_key(production_django_envs_path)
     set_django_admin_url(production_django_envs_path)
@@ -263,7 +274,9 @@ def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
     set_celery_flower_password(
         production_django_envs_path, value=DEBUG_VALUE if debug else None
     )
-
+    set_test_api_password(
+        test_api_path, value=DEBUG_VALUE if debug else None
+    )
 
 def set_flags_in_settings_files():
     set_django_secret_key(os.path.join("config", "settings", "local.py"))
