@@ -4,7 +4,7 @@ repo
 git init;
 git rm -r --cached .;
 git add .; 
-git commit -m "2021-JUL-29"; 
+git commit -m "2021-AUG-19"; 
 git branch -M main; 
 git remote add origin https://github.com/julianwagle/cookieflutter-django.git; 
 git push -u origin main -f
@@ -15,7 +15,7 @@ git branch -M main;
 git push -u origin main
 
 
-git init; git rm -r --cached .; git add .; git commit -m "2021-AUG-13"; git branch -M main; git remote add origin https://github.com/julianwagle/cookieflutter-django.git;  git push -u origin main -f
+git init; git rm -r --cached .; git add .; git commit -m "2021-AUG-19"; git branch -M main; git remote add origin https://github.com/julianwagle/cookieflutter-django.git;  git push -u origin main -f
 
 rm -rf example; 
 cookiecutter https://github.com/julianwagle/cookieflutter-django

@@ -43,9 +43,9 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 DATABASES = {"default": env.db("DATABASE_URL")}
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
-{% if cookiecutter.use_gis_tools == "y" %}
+{ % if cookiecutter.use_gis_tools == "y" % }
 DATABASES["default"]["ENGINE"] = "django.contrib.gis.db.backends.postgis"
-{% endif %}
+{ % endif % }
 
 # URLS
 # ------------------------------------------------------------------------------
@@ -72,13 +72,12 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    # 'allauth.socialaccount.providers.facebook',  
+    # 'allauth.socialaccount.providers.facebook',
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
-    'dj_rest_auth', 
-    'dj_rest_auth.registration', 
-    'drf_yasg', 
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
     {%- if cookiecutter.use_celery == 'y' %}
     "django_celery_beat",
     {%- endif %}
@@ -87,6 +86,10 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "{{ cookiecutter.project_slug }}.users.apps.UsersConfig",
     # Your stuff: custom apps go here
+    '{{ cookiecutter.project_slug }}.articles.apps.ArticlesConfig',
+    # '{{ cookiecutter.project_slug }}.authentication.apps.AuthenticationConfig',
+    '{{ cookiecutter.project_slug }}.core.apps.CoreConfig',
+    '{{ cookiecutter.project_slug }}.profiles.apps.ProfilesConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -136,9 +139,9 @@ AUTH_PASSWORD_VALIDATORS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-{%- if cookiecutter.use_whitenoise == 'y' %}
+    {%- if cookiecutter.use_whitenoise == 'y' % }
     "whitenoise.middleware.WhiteNoiseMiddleware",
-{%- endif %}
+    {%- endif % }
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -267,7 +270,7 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 
-{% if cookiecutter.use_celery == 'y' -%}
+{ % if cookiecutter.use_celery == 'y' - %}
 # Celery
 # ------------------------------------------------------------------------------
 if USE_TZ:
@@ -299,13 +302,13 @@ ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_REQUIRED = True 
+ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_VERIFICATION = "mandatory" 
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = "{{cookiecutter.project_slug}}.users.adapters.AccountAdapter" 
+ACCOUNT_ADAPTER = "{{cookiecutter.project_slug}}.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = "{{cookiecutter.project_slug}}.users.adapters.SocialAccountAdapter" 
+SOCIALACCOUNT_ADAPTER = "{{cookiecutter.project_slug}}.users.adapters.SocialAccountAdapter"
 # personal pet peeve
 LOGOUT_ON_PASSWORD_CHANGE = False
 
@@ -316,28 +319,25 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication' 
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' 
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
-CORS_ORIGIN_ALLOW_ALL = True  
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_CREDENTIALS = True 
+CORS_ALLOW_CREDENTIALS = True
 
-REST_SESSION_LOGIN = True 
-REST_USE_JWT = True 
-JWT_AUTH_COOKIE = 'auth' 
-SWAGGER_SETTINGS = {'LOGIN_URL': 'login', 'LOGOUT_URL': 'logout',} 
+REST_SESSION_LOGIN = True
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'auth'
+SWAGGER_SETTINGS = {'LOGIN_URL': 'login', 'LOGOUT_URL': 'logout', }
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField' 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-
-
-

@@ -1,6 +1,3 @@
-template-arb-file: intl_en.arb
-output-localization-file: gallery_localizations.dart
-output-class: GalleryLocalizations
-preferred-supported-locales:
-  - en
-use-deferred-loading: true
+arb-dir: lib/l10n
+template-arb-file: app_en.arb
+output-localization-file: app_localizations.dart

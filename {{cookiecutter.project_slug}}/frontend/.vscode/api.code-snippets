@@ -1,0 +1,41 @@
+{
+  "api-req": {
+    "prefix": "api-req",
+    "body": [
+      "@JsonSerializable(explicitToJson: true)",
+      "class ${1:Dummy}Request {",
+      "",
+      "  ${1:Dummy}Request({});",
+      "  factory ${1:Dummy}Request.fromJson(Map<String, dynamic> json) => _$${1:Dummy}RequestFromJson(json);",
+      "  Map<String, dynamic> toJson() => _$${1:Dummy}RequestToJson(this);",
+      "}"
+    ],
+    "scope": "dart"
+  },
+  "api-res": {
+    "prefix": "api-res",
+    "body": [
+      "@JsonSerializable(explicitToJson: true)",
+      "class ${1:Dummy}Response {",
+      "",
+      "  ${1:Dummy}Response({});",
+      "  factory ${1:Dummy}Response.fromJson(Map<String, dynamic> json) => _$${1:Dummy}ResponseFromJson(json);",
+      "  Map<String, dynamic> toJson() => _$${1:Dummy}ResponseToJson(this);",
+      "}"
+    ],
+    "scope": "dart"
+  },
+  "api-item": {
+    "prefix": "api-item",
+    "body": [
+      "@JsonSerializable(explicitToJson: true)",
+      "class ${1:Dummy}Item {",
+      "",
+      "  ${1:Dummy}Item({});",
+      "  factory ${1:Dummy}Item.fromJson(Map<String, dynamic> json) => _$${1:Dummy}ItemFromJson(json);",
+      "  Map<String, dynamic> toJson() => _$${1:Dummy}ItemToJson(this);",
+      "}"
+    ],
+    "scope": "dart"
+  }
+}
