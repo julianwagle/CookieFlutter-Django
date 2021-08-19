@@ -9,4 +9,5 @@
     "python.linting.pylamaEnabled": false,
     "python.linting.banditEnabled": false,
     "python.linting.pycodestyleEnabled": false,
+    "restructuredtext.confPath": "",
 }
