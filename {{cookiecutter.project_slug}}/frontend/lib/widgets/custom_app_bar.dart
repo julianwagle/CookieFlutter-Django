@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget {
                       }
                     },
                     child: Text(
-                      'conduit',
+                      '{{cookiecutter.project_name}}',
                       style: TextStyle(
                         fontSize: 25,
                         color: Theme.of(context).primaryColor,

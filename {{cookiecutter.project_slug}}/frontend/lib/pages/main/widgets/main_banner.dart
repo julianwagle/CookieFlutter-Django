@@ -36,7 +36,7 @@ class MainBanner extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SelectableText(
-                    'conduit',
+                    '{{cookiecutter.project_name}}',
                     style: TextStyle(
                       fontSize: 50,
                       fontWeight: FontWeight.bold,
@@ -50,7 +50,7 @@ class MainBanner extends StatelessWidget {
                     ),
                   ),
                   SelectableText(
-                    'A place to share your Flutter knowledge.',
+                    '{{cookiecutter.description}}',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
